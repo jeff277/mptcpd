@@ -59,7 +59,10 @@
 # error Problem configuring default log message destination.
 #endif
 /// Name of the default logging function determined at compile-time.
-#define MPTCPD_SET_LOG_FUNCTION MPTCPD_CONCAT(l_log_set_, MPTCPD_LOGGER)
+ // #define MPTCPD_SET_LOG_FUNCTION MPTCPD_CONCAT(l_log_set_, MPTCPD_LOGGER)
+
+#define MPTCPD_SET_LOG_FUNCTION l_log_set_stderr
+
 
 /**
  * @brief Get the function that sets the log message destination.
