@@ -312,7 +312,7 @@ AS_IF([test "x$enable_stack_protection" = "xyes"],
 # Format string vulnerabilities
 # -Wformat=2 implies:
 #    -Wformat -Wformat-nonliteral -Wformat-security -Wformat-y2k
-AX_APPEND_COMPILE_FLAGS([-Wformat=2 -Wno-error=format-security])
+AX_APPEND_COMPILE_FLAGS([-Wno-error=format-security])
 
 # Position Independent Execution (PIE)
 AX_APPEND_COMPILE_FLAGS([-fPIE], [EXECUTABLE_CFLAGS])
