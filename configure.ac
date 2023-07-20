@@ -202,7 +202,19 @@ AC_SUBST([ELL_VERSION])
 # ---------------------------------------------------------------
 # Checks for header files.
 # ---------------------------------------------------------------
-# delete
+# del
+
+AS_IF([test "x$with_kernel" = "xauto"], [with_kernel=upstream])
+
+AM_CONDITIONAL([HAVE_UPSTREAM_KERNEL],
+               [test "x$with_kernel" = "xupstream"])
+
+AH_TEMPLATE([HAVE_UPSTREAM_KERNEL],
+            [Define to 1 if mptcpd should support the upstream kernel.])
+AS_IF([test "x$with_kernel" = "xupstream"],
+      [AC_DEFINE([HAVE_UPSTREAM_KERNEL])
+       AC_MSG_NOTICE([Building support for upstream kernel.])],
+      [AC_MSG_NOTICE([Building support for multipath-tcp.org kernel.])])
 
 dnl Set default path manager based on selected kernel as needed.
 dnl
