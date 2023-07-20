@@ -202,22 +202,7 @@ AC_SUBST([ELL_VERSION])
 # ---------------------------------------------------------------
 # Checks for header files.
 # ---------------------------------------------------------------
-# @todo mptcpd ships with a copies of the upstream and
-#       multipath-tcp.org kernel <linux/mptcp.h> header files. Ideally
-#       it should not. Consider removing them from mptcpd.
-MPTCPD_CHECK_LINUX_MPTCP_H
-
-AS_IF([test "x$with_kernel" = "xauto"], [with_kernel=upstream])
-
-AM_CONDITIONAL([HAVE_UPSTREAM_KERNEL],
-               [test "x$with_kernel" = "xupstream"])
-
-AH_TEMPLATE([HAVE_UPSTREAM_KERNEL],
-            [Define to 1 if mptcpd should support the upstream kernel.])
-AS_IF([test "x$with_kernel" = "xupstream"],
-      [AC_DEFINE([HAVE_UPSTREAM_KERNEL])
-       AC_MSG_NOTICE([Building support for upstream kernel.])],
-      [AC_MSG_NOTICE([Building support for multipath-tcp.org kernel.])])
+# delete
 
 dnl Set default path manager based on selected kernel as needed.
 dnl
