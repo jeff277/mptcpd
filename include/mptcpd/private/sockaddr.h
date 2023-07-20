@@ -26,14 +26,12 @@
  */
 ///@{
 #if __BYTE_ORDER == __LITTLE_ENDIAN
-# define MPTCPD_CONSTANT_HTONS(hs) __bswap_constant_16(hs)
-# define MPTCPD_CONSTANT_HTONL(hl) __bswap_constant_32(hl)
+# define MPTCPD_CONSTANT_HTONS(hs) ((((hs) >> 8) & 0xff) | (((hs) & 0xff) << 8))
+# define MPTCPD_CONSTANT_HTONL(hl) ((((hl) >> 24) & 0xff) | (((hl) >> 8) & 0xff00) | (((hl) & 0xff00) << 8) | (((hl) & 0xff) << 24))
 #else
-// No need to swap bytes on big endian platforms.
-// host byte order == network byte order
 # define MPTCPD_CONSTANT_HTONS(hs) hs
 # define MPTCPD_CONSTANT_HTONL(hl) hl
-#endif  // __BYTE_ORDER == __LITTLE_ENDIAN
+#endif
 ///@}
 
 
