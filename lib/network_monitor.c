@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <assert.h>
 
+#include <byteswap.h>
 #include <linux/rtnetlink.h>
 #include <arpa/inet.h>
 #include <net/if.h>  // For standard network interface flags.
