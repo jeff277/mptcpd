@@ -36,6 +36,18 @@
 #define PRELOAD_VAR		"LD_PRELOAD="
 #define MPTCPWRAP_ENV		"LD_PRELOAD="PKGLIBDIR"/libmptcpwrap.so.0.0."LIBREVISION
 
+#define error(status, errnum, fmt, ...) do { \
+    if (errnum) { \
+        errno = errnum; \
+        perror(fmt); \
+    } else { \
+        fprintf(stderr, "%s\n", fmt); \
+    } \
+    if (status) \
+        exit(status); \
+} while(0)
+
+
 /* Program documentation. */
 static char args_doc[] = "CMD";
 
